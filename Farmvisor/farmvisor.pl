@@ -9,7 +9,7 @@ main:-  new(D,dialog('FARMVISOR')),
         send(D, append, new(Menu, menu_bar)),
         send(Menu, append, new(Inicio, popup(inicio))),
         send(Menu, append, new(Ayuda, popup(ayuda))),
-	send(Menu, append, new(Acerca_de, popup(acerca_de))),
+		send(Menu, append, new(Acerca_de, popup(acerca_de))),
         send_list(Inicio, append,
                          [ menu_item(inicio, message(@prolog,pProposito))
                          ]),
@@ -17,10 +17,12 @@ main:-  new(D,dialog('FARMVISOR')),
                          [ menu_item(instrucciones_generales, message(@display, inform, '\t\t    ¡Bienvenido a FARMVISOR!\n\n   Este sistema experto le ayudará a elegir la raza de gallina que mejor se adapte a sus necesidades.\n\n   Para ello usted deberá responder una serie de preguntas con base en las cuales se deducirá cuál es su mejor opción.\n\n   Para empezar diríjase a la sección Inicio. \n\n\t\t¡Esperamos que nuestra recomendación le sea útil!')),
 			   menu_item(instrucciones_detalladas, message(@display, inform, 'Instrucciones\n\n1)Esta aplicación está desarrollada para productores aficionados o empresarios que desean iniciar su propia granja avícola. Al finalizar el cuestionario, se le dará una sugerencia de raza de gallina de acuerdo con las especificaciones que usted mismo dé.\n\n2)Para iniciar, diríjase a inicio.\n\n3)Las preguntas que se le harán son de selección. Por cada una usted debe elegir una opción.\n\n3)Usted tiene la oportunidad de cambiar sus respuestas. Para ello, cada formulario de preguntas tiene un botón que le permite volver al formulario anterior.\n\n4)La respuesta del sistema es completamente dependiente de sus respuestas, por lo que el cambio en alguna de ellas, puede alterar el resultado. Por ello se le sugiere ser objetivo al responder para que la respuesta del sistema sea adecuada.\n\n5)El sistema le sugerirá una raza, la más apta para sus requerimientos; sin embargo esto no indica, de ninguna manera, que alguna otra raza no vaya a cumplir con su objetivo. Puede variar un poco las respuestas para ver otros resultados.'))
                          ]),
-	send_list(Acerca_de, append,
+		send_list(Acerca_de, append,
 		         [ menu_item(datos_generales, message(@display, inform, '\tFARMVISOR (2014)\n\nVersion 1.0\n\nDesarrollado por: \n\tMario Cabrera Vega \n\tAlex Ramírez Alpízar\n\nCI-1441 Paradigmas Computacionales\n\n\tProyecto Práctico'))]),
-        mostrar('./Images/variadas.jpg',D,40,100),
-        send(D,open,point(200,200)).
+        send(D, append,new(label(l,'\n\t\tFARMVISOR, sistema experto para elección de aves para granja avícola ',font('times','roman',16)))),
+		send(D, append,new(label(l,'\nEste sistema le ayudará a elegir la raza de gallina que mejor se ajuste a sus necesidades. \n\nPara ello, solamente diríjase al menú de Inicio y conteste las preguntas que se le formularán.',font('times','roman',13)))),
+		mostrar('./Images/variadas.jpg',D,40,170),
+        send(D,open,point(200,90)).
 
 pProposito:-
        new(D,dialog('PROPÓSITO')),
@@ -31,7 +33,7 @@ pProposito:-
        new(B,button(siguiente,and(message(@prolog,principal,Pre1?selection),message(D,destroy)))),
       send(D,append,B),
       send(D,default_button,siguiente),
-      send(D,open,point(350,350)).
+      send(D,open,point(200,350)).
 
 %PROPÓSITO HUEVOS
 principal(huevos):-
@@ -403,8 +405,8 @@ paraOrnamental(grande,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Cornish')),
 	send(D,append,L),
-	mostrar('./Images/infoCornish.jpg',D,20,40),
-	mostrar('./Images/cornish.jpg',D,400,40),
+	mostrar('./Images/infoConchinchina.jpg',D,20,40),
+	mostrar('./Images/conchinchina.jpg',D,400,40),
 	send(D,open).%conchinchina
 paraOrnamental(grande,amplio,veinte_mil):-
         new(D,dialog('Gallina')),
