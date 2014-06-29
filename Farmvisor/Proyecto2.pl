@@ -118,7 +118,7 @@ principal(ornamental):-
        send_list(Pre3,append,[siete_mil , catorce_mil, veinte_mil]),
        send(D,append(Pre3)),
 
-       new(B1,button(atras,and(message(@prolog,pProposito),message(D,destroy)))),
+       new(B1,button(atrás,and(message(@prolog,pProposito),message(D,destroy)))),
        new(B,button(siguiente,message(@prolog,paraOrnamental,Pre1?selection,Pre2?selection,Pre3?selection))),
 
        send(D,append,B1),
@@ -127,269 +127,313 @@ principal(ornamental):-
 
 paraHuevos(blanco,pastoreo,concentrado):-
 	new(D,dialog('Gallina')),
-        new(L,label(n,'Gallina casera')),
+        new(L,label(n,'Gallina Menorca')),
 	send(D,append,L),
-	mostrar('./Images/menorca.jpg',D,20,40),
-	send(D,open).%no hay, menorca.
+	mostrar('./Images/infoMenorca.jpg',D,20,40),
+	mostrar('./Images/menorca.jpg',D,400,40),
+	send(D,open).%menorca.
 paraHuevos(blanco,pastoreo,organico):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Andaluza')),
 	send(D,append,L),
-	mostrar('./Images/andaluza_azul.jpg',D,20,40),
-	send(D,open).%no hay, andaluza.
+	mostrar('./Images/infoAndaluza.jpg',D,20,40),
+	mostrar('./Images/andaluza_azul.jpg',D,400,40),
+	send(D,open).%andaluza.
 paraHuevos(blanco,encierro,organico):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Combatiente Español')),
 	send(D,append,L),
-	mostrar('./Images/combatiente_español.jpg',D,20,40),
+	mostrar('./Images/infoCombatiente.jpg',D,20,40),
+	mostrar('./Images/combatiente_español.jpg',D,400,40),
 	send(D,open).%combatiente
 paraHuevos(blanco,encierro,concentrado):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Leghorn')),
 	send(D,append,L),
-	mostrar('./Images/leghorn.jpg',D,20,40),%leghorn
+	mostrar('./Images/infoLeghorn.jpg',D,20,40),
+	mostrar('./Images/leghorn.jpg',D,400,40),
 	send(D,open). %leghorn
-paraHuevos(marron,pastoreo,concetrado):-
+paraHuevos(marron,pastoreo,concentrado):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
-	mostrar('./Images/sex_link.jpg',D,20,40),
+	mostrar('./Images/infoSex_link.jpg',D,20,40),
+	mostrar('./Images/sex_link2.jpg',D,400,40),
 	send(D,open).%Sex_link
 paraHuevos(marron,pastoreo,organico):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
-	mostrar('./Images/sex_link.jpg',D,20,40),
+	mostrar('./Images/infoSex_link.jpg',D,20,40),
+	mostrar('./Images/sex_link.jpg',D,400,40),
 	send(D,open).%Sex_link
 paraHuevos(marron,encierro,concentrado):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rhode Island')),
 	send(D,append,L),
-	mostrar('./Images/rhode_island.JPG',D,20,40),
+	mostrar('./Images/infoRhode_island.JPG',D,20,40),
+	mostrar('./Images/rhode_island.JPG',D,400,40),
 	send(D,open). %rhode island
 paraHuevos(marron,encierro,organico):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Plymouth Rock')),
 	send(D,append,L),
-	mostrar('./Images/plymouth_rock_barrado2.jpg',D,20,40),
+	mostrar('./Images/InfoPlymouth_rock.jpg',D,20,40),
+	mostrar('./Images/plymouth_rock-barrado2.jpg',D,400,40),
 	send(D,open).%Plymouth Rock
 paraCarne(mediano,pastoreo,concentrado):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Broiler')),
 	send(D,append,L),
-	mostrar('./Images/broiler.jpg',D,20,40),
+	mostrar('./Images/infoBroiler.jpg',D,20,40),
+	mostrar('./Images/broiler.jpg',D,400,40),
 	send(D,open).%Broiler
 paraCarne(mediano,pastoreo,organico):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Jersey')),
 	send(D,append,L),
-	mostrar('./Images/jersey.jpg',D,20,40),
+	mostrar('./Images/infoJersey.jpg',D,20,40),
+	mostrar('./Images/jersey.jpg',D,400,40),
 	send(D,open).%Jersey
 paraCarne(mediano,encierro,organico):-
         new(D,dialog('Gallina')),
-        new(L,label(n,'Cornish')),
+        new(L,label(n,'Gallina Casera Grande')),
 	send(D,append,L),
-	mostrar('./Images/casera_grande.jpg',D,20,40),
+	mostrar('./Images/infoCasera_grande.jpg',D,20,40),
+	mostrar('./Images/casera_grande.jpg',D,400,40),
 	send(D,open).%Casera grande
 paraCarne(mediano,encierro,concentrado):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Cornish')),
 	send(D,append,L),
-	mostrar('./Images/cornish.jpg',D,20,40),
+	mostrar('./Images/infoCornish.jpg',D,20,40),
+	mostrar('./Images/cornish.jpg',D,400,40),
 	send(D,open).%Cornish
-paraCarne(grande,pastoreo,concetrado):-
+paraCarne(grande,pastoreo,concentrado):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Orpington')),
 	send(D,append,L),
-	mostrar('./Images/orpington.jpg',D,20,40),
+	mostrar('./Images/infoOrpington.jpg',D,20,40),
+	mostrar('./Images/orpington.jpg',D,400,40),
 	send(D,open).%Orpington
 paraCarne(grande,pastoreo,organico):-
         new(D,dialog('Gallina')),
-        new(L,label(n,'Cornish')),
+        new(L,label(n,'Brahma')),
 	send(D,append,L),
-	mostrar('./Images/brahma_blanca.jpg',D,20,40),
+	mostrar('./Images/infoBrahma.jpg',D,20,40),
+	mostrar('./Images/brahma_blanca.jpg',D,400,40),
 	send(D,open).%Brahma
 paraCarne(grande,encierro,concentrado):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Broiler')),
 	send(D,append,L),
-	mostrar('./Images/broiler.jpg',D,20,40),
+	mostrar('./Images/infoBroiler.jpg',D,20,40),
+	mostrar('./Images/broiler.jpg',D,400,40),
 	send(D,open).%Broiler
 paraCarne(grande,encierro,organico):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Broiler')),
 	send(D,append,L),
-	mostrar('./Images/broiler.jpg',D,20,40),
+	mostrar('./Images/infoBroiler.jpg',D,20,40),
+	mostrar('./Images/broiler.jpg',D,400,40),
 	send(D,open).%Broiler
 paraDoble(mediano,pastoreo,concentrado,blanco):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Pita Pinta')),
 	send(D,append,L),
-	mostrar('./Images/pita_pinta.jpg',D,20,40),
+	mostrar('./Images/infoPitaPinta.jpg',D,20,40),
+	mostrar('./Images/pita_pinta.jpg',D,400,40),
 	send(D,open).%pita_pinta
 paraDoble(mediano,pastoreo,organico,blanco):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Pita Pinta')),
 	send(D,append,L),
-	mostrar('./Images/pita_pinta.jpg',D,20,40),
+	mostrar('./Images/infoPitaPinta.jpg',D,20,40),
+	mostrar('./Images/pita_pinta.jpg',D,400,40),
 	send(D,open).%pita_pinta
 paraDoble(mediano,encierro,organico,blanco):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rubia Piamontesa')),
 	send(D,append,L),
-	mostrar('./Images/rubia_piamontesa.jpg',D,20,40),
+	mostrar('./Images/infoRubia.jpg',D,20,40),
+	mostrar('./Images/rubia_piamontesa.jpg',D,400,40),
 	send(D,open).%Rubia_piamontesa
 paraDoble(mediano,encierro,concentrado,blanco):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rubia Piamontesa')),
 	send(D,append,L),
-	mostrar('./Images/rubia_piamontesa.jpg',D,20,40),
+	mostrar('./Images/infoRubia.jpg',D,20,40),
+	mostrar('./Images/rubia_piamontesa.jpg',D,400,40),
 	send(D,open).%Rubia_piamontesa
-paraDoble(grande,pastoreo,concetrado,blanco):-
+paraDoble(grande,pastoreo,concentrado,blanco):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Valdarno')),
 	send(D,append,L),
-	mostrar('./Images/valdarno.jpg',D,20,40),
-	send(D,open).%La_Fleche
+	mostrar('./Images/infoValdarno.jpg',D,20,40),
+	mostrar('./Images/valdarno.jpg',D,400,40),
+	send(D,open).%Valdarno
 paraDoble(grande,pastoreo,organico,blanco):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'La Fleche')),
 	send(D,append,L),
-	mostrar('./Images/la_fleche.jpg',D,20,40),
+	mostrar('./Images/infoFleche.jpg',D,20,40),
+	mostrar('./Images/la_fleche.jpg',D,400,40),
 	send(D,open).%La_Fleche
 paraDoble(grande,encierro,concentrado,blanco):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Catalana de Prat')),
 	send(D,append,L),
-	mostrar('./Images/catalana_de_prat.jpg',D,20,40),
+	mostrar('./Images/infoCatalana.jpg',D,20,40),
+	mostrar('./Images/catalana_de_prat.jpg',D,400,40),
 	send(D,open).%Catalana de Prat
 paraDoble(grande,encierro,organico,blanco):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Catalana de Prat')),
 	send(D,append,L),
-	mostrar('./Images/catalana_de_prat.jpg',D,20,40),
+	mostrar('./Images/infoCatalana.jpg',D,20,40),
+	mostrar('./Images/catalana_de_prat.jpg',D,400,40),
 	send(D,open).%Catalana de Prat
 paraDoble(mediano,pastoreo,concentrado,marron):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Sussex')),
 	send(D,append,L),
-	mostrar('./Images/sussex.jpg',D,20,40),
+	mostrar('./Images/infoSussex.jpg',D,20,40),
+	mostrar('./Images/sussex.jpg',D,400,40),
 	send(D,open).%Sussex
 paraDoble(mediano,pastoreo,organico,marron):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
-	mostrar('./Images/sex_link.jpg',D,20,40),
+	mostrar('./Images/infoSex_link.jpg',D,20,40),
+	mostrar('./Images/sex_link.jpg',D,400,40),
 	send(D,open).%Sex_link
 paraDoble(mediano,encierro,organico,marron):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
-	mostrar('./Images/sex_link2.jpg',D,20,40),
+	mostrar('./Images/infoSex_link.jpg',D,20,40),
+	mostrar('./Images/sex_link2.jpg',D,400,40),
 	send(D,open).%%Sex_link
 paraDoble(mediano,encierro,concentrado,marron):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'New Hampshire')),
 	send(D,append,L),
-	mostrar('./Images/new_hampshire.JPG',D,20,40),
+	mostrar('./Images/infoNew.JPG',D,20,40),
+	mostrar('./Images/new_hampshire.JPG',D,400,40),
 	send(D,open).%Wyandotte
 
 paraDoble(grande,pastoreo,concetrado,marron):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
-	mostrar('./Images/wyandotte.jpg',D,20,40),
+	mostrar('./Images/infoWyandotte.jpg',D,20,40),
+	mostrar('./Images/wyandotte.jpg',D,400,40),
 	send(D,open).%Wyandotte
 paraDoble(grande,pastoreo,organico,marron):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Plymouth Rock')),
 	send(D,append,L),
-	mostrar('./Images/plymouth_rock_barrado.jpg',D,20,40),
+	mostrar('./Images/infoPlymouth_rock.jpg',D,20,40),
+	mostrar('./Images/plymouth_rock_barrado.jpg',D,400,40),
 	send(D,open).%Plymouth Rock
 paraDoble(grande,encierro,concentrado,marron):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
-	mostrar('./Images/wyandotte.jpg',D,20,40),
+	mostrar('./Images/infoWyandotte.jpg',D,20,40),
+	mostrar('./Images/wyandotte.jpg',D,400,40),
 	send(D,open).%Wyandotte
 paraDoble(grande,encierro,organico,marron):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
-	mostrar('./Images/wyandotte.jpg',D,20,40),
+	mostrar('./Images/infoWyandotte.jpg',D,20,40),
+	mostrar('./Images/wyandotte.jpg',D,400,40),
 	send(D,open).%Wyandotte
 paraOrnamental(mediano,amplio,siete_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Enana')),
 	send(D,append,L),
-	mostrar('./Images/nagasaki.jpg',D,20,40),
+	mostrar('./Images/infoEnanas.jpg',D,20,40),
+	mostrar('./Images/nagasaki.jpg',D,400,40),
 	send(D,open). %enana
 paraOrnamental(mediano,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Moñuda holandesa')),
 	send(D,append,L),
-	mostrar('./Images/polaca_negra.jpg',D,20,40),
+	mostrar('./Images/infoPolaca.jpg',D,20,40),
+	mostrar('./Images/polaca_negra.jpg',D,400,40),
 	send(D,open).%holandesa
 paraOrnamental(mediano,amplio,veinte_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Paduana')),
 	send(D,append,L),
-	mostrar('./Images/paduana.jpg',D,20,40),
+	mostrar('./Images/infoPaduana.jpg',D,20,40),
+	mostrar('./Images/paduana.jpg',D,400,40),
 	send(D,open).%paduana
 paraOrnamental(mediano,estrecho,siete_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Enana')),
 	send(D,append,L),
-	mostrar('./Images/nagasaki2.jpg',D,20,40),
+	mostrar('./Images/infoEnanas.jpg',D,20,40),
+	mostrar('./Images/nagasaki2.jpg',D,400,40),
 	send(D,open).%enana
 paraOrnamental(mediano,estrecho,catorce_mil):-
 	new(D,dialog('Gallina')),
-        new(L,label(n,'Casera, de patio o criolla')),
+        new(L,label(n,'Gallina Sedosa Japonesa')),
 	send(D,append,L),
-	mostrar('./Images/criolla.jpg',D,20,40),
+	mostrar('./Images/infoJaponesa.jpg',D,20,40),
+	mostrar('./Images/japonesa.jpg',D,400,40),
 	send(D,open).%
 paraOrnamental(mediano,estrecho,veinte_mil):-
 	new(D,dialog('Gallina')),
-        new(L,label(n,'Wyandotte')),
+        new(L,label(n, 'Española de cara blanca')),
 	send(D,append,L),
-	mostrar('./Images/español_cara_blanca.jpg',D,20,40),
+	mostrar('./Images/infoCaraBlanca.jpg',D,20,40),
+	mostrar('./Images/cara_blanca.jpg',D,400,40),
 	send(D,open).%español cara blancan
 paraOrnamental(grande,amplio,siete_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina casera')),
 	send(D,append,L),
-	mostrar('./Images/casera2.jpg',D,20,40),
+	mostrar('./Images/infoCasera.jpg',D,20,40),
+	mostrar('./Images/casera2.jpg',D,400,40),
 	send(D,open).%casera mediana
 paraOrnamental(grande,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Cornish')),
 	send(D,append,L),
-	mostrar('./Images/conchinchina.jpg',D,20,40),
+	mostrar('./Images/infoCornish.jpg',D,20,40),
+	mostrar('./Images/cornish.jpg',D,400,40),
 	send(D,open).%conchinchina
 paraOrnamental(grande,amplio,veinte_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Española de cara blanca')),
 	send(D,append,L),
-	mostrar('./Images/cara_blanca.jpg',D,20,40),
+	mostrar('./Images/infoCaraBlanca.jpg',D,20,40),
+	mostrar('./Images/cara_blanca.jpg',D,400,40),
 	send(D,open).%español cara blanca
 paraOrnamental(grande,estrecho,siete_mil):-
 	new(D,dialog('Gallina')),
-        new(L,label(n,'Gallina casera')),
+        new(L,label(n,'Gallina chiricana')),
 	send(D,append,L),
-	mostrar('./Images/casera_grande.jpg',D,20,40),
-	send(D,open).%casera grande
+	mostrar('./Images/infoChiricana.jpg',D,20,40),
+	mostrar('./Images/chiricana.jpg',D,400,40),
+	send(D,open).%chiricana
 paraOrnamental(grande,estrecho,catorce_mil):-
 	new(D,dialog('Gallina')),
-        new(L,label(n,'Gallina casera')),
+        new(L,label(n,'Gallina Casera')),
 	send(D,append,L),
-	mostrar('./Images/casera_grande.jpg',D,20,40),
+	mostrar('./Images/infoCasera_grande.jpg',D,20,40),
+	mostrar('./Images/casera_grande.jpg',D,400,40),
 	send(D,open).%casera grande
 paraOrnamental(grande,estrecho,veinte_mil):-
 	new(D,dialog('Gallina')),
-        new(L,label(n,'Gallina casera chiricana')),
+        new(L,label(n,'Gallina Sultana')),
 	send(D,append,L),
-	mostrar('./Images/chiricana.jpg',D,20,40),
-	send(D,open).%chiricana
+	mostrar('./Images/infoSultana.jpg',D,20,40),
+	mostrar('./Images/sultana.jpg',D,400,40),
+	send(D,open).%sultana
 
 mostrar(V,D,X,Y):- new(I, image(V)),
         new(B, bitmap(I)),
