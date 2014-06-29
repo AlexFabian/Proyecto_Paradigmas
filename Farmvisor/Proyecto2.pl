@@ -4,18 +4,22 @@
 % Alex Ramírez Alpízar  B15239
 
 main:-  new(D,dialog('FARMVISOR')),
-        send(D,size,size(300,300)),
+        send(D,size,size(600,600)),
         send(D,colour,colour(red)),
         send(D, append, new(Menu, menu_bar)),
-        send(Menu, append, new(Iniciar, popup(iniciar))),
+        send(Menu, append, new(Inicio, popup(inicio))),
         send(Menu, append, new(Ayuda, popup(ayuda))),
-        send_list(Iniciar, append,
-                         [ menu_item(iniciar, message(@prolog,pProposito))
+	send(Menu, append, new(Acerca_de, popup(acerca_de))),
+        send_list(Inicio, append,
+                         [ menu_item(inicio, message(@prolog,pProposito))
                          ]),
         send_list(Ayuda, append,
-                         [ menu_item(autor, message(@display, inform, 'qwe'))
+                         [ menu_item(instrucciones_generales, message(@display, inform, '\t\t    ¡Bienvenido a FARMVISOR!\n\n   Este sistema experto le ayudará a elegir la raza de gallina que mejor se adapte a sus necesidades.\n\n   Para ello usted deberá responder una serie de preguntas con base en las cuales se deducirá cuál es su mejor opción.\n\n   Para empezar diríjase a la sección Inicio. \n\n\t\t¡Esperamos que nuestra recomendación le sea útil!')),
+			   menu_item(instrucciones_detalladas, message(@display, inform, 'Instrucciones\n\n1)Esta aplicación está desarrollada para productores aficionados o empresarios que desean iniciar su propia granja avícola. Al finalizar el cuestionario, se le dará una sugerencia de raza de gallina de acuerdo con las especificaciones que usted mismo dé.\n\n2)Para iniciar, diríjase a inicio.\n\n3)Las preguntas que se le harán son de selección. Por cada una usted debe elegir una opción.\n\n3)Usted tiene la oportunidad de cambiar sus respuestas. Para ello, cada formulario de preguntas tiene un botón que le permite volver al formulario anterior.\n\n4)La respuesta del sistema es completamente dependiente de sus respuestas, por lo que el cambio en alguna de ellas, puede alterar el resultado. Por ello se le sugiere ser objetivo al responder para que la respuesta del sistema sea adecuada.\n\n5)El sistema le sugerirá una raza, la más apta para sus requerimientos; sin embargo esto no indica, de ninguna manera, que alguna otra raza no vaya a cumplir con su objetivo. Puede variar un poco las respuestas para ver otros resultados.'))
                          ]),
-       % mostrar('C:/Programa/talla.bmp',D,Menu),
+	send_list(Acerca_de, append,
+		         [ menu_item(datos_generales, message(@display, inform, '\tFARMVISOR (2014)\n\nVersion 1.0\n\nDesarrollado por: \n\tMario Cabrera Vega \n\tAlex Ramírez Alpízar\n\nCI-1441 Paradigmas Computacionales\n\n\tProyecto Práctico'))]),
+        mostrar('./Images/variadas.jpg',D,40,100),
         send(D,open,point(200,200)).
 
 pProposito:-
@@ -121,59 +125,271 @@ principal(ornamental):-
        send(D,append,B),
        send(D,open,point(300,300)).
 
-paraHuevos(blanco,pastoreo,concentrado). %no hay, menorca o andaluza .
-paraHuevos(blanco,pastoreo,organico). %menorca o andaluza.
-paraHuevos(blanco,encierro,organico). %combatiente
-paraHuevos(blanco,encierro,concentrado). %leghorn
-paraHuevos(marron,pastoreo,concetrado). %no hay
-paraHuevos(marron,pastoreo,organico). %no hay
+paraHuevos(blanco,pastoreo,concentrado):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Gallina casera')),
+	send(D,append,L),
+	mostrar('./Images/menorca.jpg',D,20,40),
+	send(D,open).%no hay, menorca.
+paraHuevos(blanco,pastoreo,organico):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Gallina Andaluza')),
+	send(D,append,L),
+	mostrar('./Images/andaluza_azul.jpg',D,20,40),
+	send(D,open).%no hay, andaluza.
+paraHuevos(blanco,encierro,organico):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Combatiente Español')),
+	send(D,append,L),
+	mostrar('./Images/combatiente_español.jpg',D,20,40),
+	send(D,open).%combatiente
+paraHuevos(blanco,encierro,concentrado):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Leghorn')),
+	send(D,append,L),
+	mostrar('./Images/leghorn.jpg',D,20,40),%leghorn
+	send(D,open). %leghorn
+paraHuevos(marron,pastoreo,concetrado):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Sex link')),
+	send(D,append,L),
+	mostrar('./Images/sex_link.jpg',D,20,40),
+	send(D,open).%Sex_link
+paraHuevos(marron,pastoreo,organico):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Sex link')),
+	send(D,append,L),
+	mostrar('./Images/sex_link.jpg',D,20,40),
+	send(D,open).%Sex_link
 paraHuevos(marron,encierro,concentrado):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rhode Island')),
 	send(D,append,L),
 	mostrar('./Images/rhode_island.JPG',D,20,40),
 	send(D,open). %rhode island
-paraHuevos(marron,encierro,organico). %no hay
+paraHuevos(marron,encierro,organico):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Plymouth Rock')),
+	send(D,append,L),
+	mostrar('./Images/plymouth_rock_barrado2.jpg',D,20,40),
+	send(D,open).%Plymouth Rock
+paraCarne(mediano,pastoreo,concentrado):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Broiler')),
+	send(D,append,L),
+	mostrar('./Images/broiler.jpg',D,20,40),
+	send(D,open).%Broiler
+paraCarne(mediano,pastoreo,organico):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Jersey')),
+	send(D,append,L),
+	mostrar('./Images/jersey.jpg',D,20,40),
+	send(D,open).%Jersey
+paraCarne(mediano,encierro,organico):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Cornish')),
+	send(D,append,L),
+	mostrar('./Images/casera_grande.jpg',D,20,40),
+	send(D,open).%Casera grande
+paraCarne(mediano,encierro,concentrado):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Cornish')),
+	send(D,append,L),
+	mostrar('./Images/cornish.jpg',D,20,40),
+	send(D,open).%Cornish
+paraCarne(grande,pastoreo,concetrado):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Orpington')),
+	send(D,append,L),
+	mostrar('./Images/orpington.jpg',D,20,40),
+	send(D,open).%Orpington
+paraCarne(grande,pastoreo,organico):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Cornish')),
+	send(D,append,L),
+	mostrar('./Images/brahma_blanca.jpg',D,20,40),
+	send(D,open).%Brahma
+paraCarne(grande,encierro,concentrado):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Broiler')),
+	send(D,append,L),
+	mostrar('./Images/broiler.jpg',D,20,40),
+	send(D,open).%Broiler
+paraCarne(grande,encierro,organico):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Broiler')),
+	send(D,append,L),
+	mostrar('./Images/broiler.jpg',D,20,40),
+	send(D,open).%Broiler
+paraDoble(mediano,pastoreo,concentrado,blanco):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Pita Pinta')),
+	send(D,append,L),
+	mostrar('./Images/pita_pinta.jpg',D,20,40),
+	send(D,open).%pita_pinta
+paraDoble(mediano,pastoreo,organico,blanco):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Pita Pinta')),
+	send(D,append,L),
+	mostrar('./Images/pita_pinta.jpg',D,20,40),
+	send(D,open).%pita_pinta
+paraDoble(mediano,encierro,organico,blanco):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Rubia Piamontesa')),
+	send(D,append,L),
+	mostrar('./Images/rubia_piamontesa.jpg',D,20,40),
+	send(D,open).%Rubia_piamontesa
+paraDoble(mediano,encierro,concentrado,blanco):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Rubia Piamontesa')),
+	send(D,append,L),
+	mostrar('./Images/rubia_piamontesa.jpg',D,20,40),
+	send(D,open).%Rubia_piamontesa
+paraDoble(grande,pastoreo,concetrado,blanco):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Valdarno')),
+	send(D,append,L),
+	mostrar('./Images/valdarno.jpg',D,20,40),
+	send(D,open).%La_Fleche
+paraDoble(grande,pastoreo,organico,blanco):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'La Fleche')),
+	send(D,append,L),
+	mostrar('./Images/la_fleche.jpg',D,20,40),
+	send(D,open).%La_Fleche
+paraDoble(grande,encierro,concentrado,blanco):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Catalana de Prat')),
+	send(D,append,L),
+	mostrar('./Images/catalana_de_prat.jpg',D,20,40),
+	send(D,open).%Catalana de Prat
+paraDoble(grande,encierro,organico,blanco):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Catalana de Prat')),
+	send(D,append,L),
+	mostrar('./Images/catalana_de_prat.jpg',D,20,40),
+	send(D,open).%Catalana de Prat
+paraDoble(mediano,pastoreo,concentrado,marron):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Sussex')),
+	send(D,append,L),
+	mostrar('./Images/sussex.jpg',D,20,40),
+	send(D,open).%Sussex
+paraDoble(mediano,pastoreo,organico,marron):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Sex link')),
+	send(D,append,L),
+	mostrar('./Images/sex_link.jpg',D,20,40),
+	send(D,open).%Sex_link
+paraDoble(mediano,encierro,organico,marron):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Sex link')),
+	send(D,append,L),
+	mostrar('./Images/sex_link2.jpg',D,20,40),
+	send(D,open).%%Sex_link
+paraDoble(mediano,encierro,concentrado,marron):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'New Hampshire')),
+	send(D,append,L),
+	mostrar('./Images/new_hampshire.JPG',D,20,40),
+	send(D,open).%Wyandotte
 
-paraCarne(mediano,pastoreo,concentrado). %
-paraCarne(mediano,pastoreo,organico). %
-paraCarne(mediano,encierro,organico). %
-paraCarne(mediano,encierro,concentrado). %Cornish
-paraCarne(grande,pastoreo,concetrado). %Orpington
-paraCarne(grande,pastoreo,organico). %Brahma
-paraCarne(grande,encierro,concentrado). %Broiler
-paraCarne(grande,encierro,organico). %
-
-paraDoble(mediano,pastoreo,concentrado,blanco). %
-paraDoble(mediano,pastoreo,organico,blanco). %
-paraDoble(mediano,encierro,organico,blanco). %
-paraDoble(mediano,encierro,concentrado,blanco). %
-paraDoble(grande,pastoreo,concetrado,blanco). %
-paraDoble(grande,pastoreo,organico,blanco). %
-paraDoble(grande,encierro,concentrado,blanco). %
-paraDoble(grande,encierro,organico,blanco). %
-paraDoble(mediano,pastoreo,concentrado,marron). %
-paraDoble(mediano,pastoreo,organico,marron). %Sussex
-paraDoble(mediano,encierro,organico,marron). %Sussex
-paraDoble(mediano,encierro,concentrado,marron). %Sussex
-paraDoble(grande,pastoreo,concetrado,marron). %Wyandotte
-paraDoble(grande,pastoreo,organico,marron). %Plymouth Rock
-paraDoble(grande,encierro,concentrado,marron). %Wyandotte
-paraDoble(grande,encierro,organico,marron). %Wyandotte
-
-paraOrnamental(mediano,amplio,siete_mil). %enana
-paraOrnamental(mediano,amplio,catorce_mil). %holandesa
-paraOrnamental(mediano,amplio,veinte_mil). %paduana
-paraOrnamental(mediano,estrecho,siete_mil). %enana
-paraOrnamental(mediano,estrecho,catorce_mil). %
-paraOrnamental(mediano,estrecho,veinte_mil). %español cara blanca
-paraOrnamental(grande,amplio,siete_mil). %
-paraOrnamental(grande,amplio,catorce_mil). %conchinchina
-paraOrnamental(grande,amplio,veinte_mil). %español cara blanca
-paraOrnamental(grande,estrecho,siete_mil). %
-paraOrnamental(grande,estrecho,catorce_mil). %
-paraOrnamental(grande,estrecho,veinte_mil). %
-
+paraDoble(grande,pastoreo,concetrado,marron):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Wyandotte')),
+	send(D,append,L),
+	mostrar('./Images/wyandotte.jpg',D,20,40),
+	send(D,open).%Wyandotte
+paraDoble(grande,pastoreo,organico,marron):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Plymouth Rock')),
+	send(D,append,L),
+	mostrar('./Images/plymouth_rock_barrado.jpg',D,20,40),
+	send(D,open).%Plymouth Rock
+paraDoble(grande,encierro,concentrado,marron):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Wyandotte')),
+	send(D,append,L),
+	mostrar('./Images/wyandotte.jpg',D,20,40),
+	send(D,open).%Wyandotte
+paraDoble(grande,encierro,organico,marron):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Wyandotte')),
+	send(D,append,L),
+	mostrar('./Images/wyandotte.jpg',D,20,40),
+	send(D,open).%Wyandotte
+paraOrnamental(mediano,amplio,siete_mil):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Enana')),
+	send(D,append,L),
+	mostrar('./Images/nagasaki.jpg',D,20,40),
+	send(D,open). %enana
+paraOrnamental(mediano,amplio,catorce_mil):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Moñuda holandesa')),
+	send(D,append,L),
+	mostrar('./Images/polaca_negra.jpg',D,20,40),
+	send(D,open).%holandesa
+paraOrnamental(mediano,amplio,veinte_mil):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Paduana')),
+	send(D,append,L),
+	mostrar('./Images/paduana.jpg',D,20,40),
+	send(D,open).%paduana
+paraOrnamental(mediano,estrecho,siete_mil):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Enana')),
+	send(D,append,L),
+	mostrar('./Images/nagasaki2.jpg',D,20,40),
+	send(D,open).%enana
+paraOrnamental(mediano,estrecho,catorce_mil):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Casera, de patio o criolla')),
+	send(D,append,L),
+	mostrar('./Images/criolla.jpg',D,20,40),
+	send(D,open).%
+paraOrnamental(mediano,estrecho,veinte_mil):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Wyandotte')),
+	send(D,append,L),
+	mostrar('./Images/español_cara_blanca.jpg',D,20,40),
+	send(D,open).%español cara blancan
+paraOrnamental(grande,amplio,siete_mil):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Gallina casera')),
+	send(D,append,L),
+	mostrar('./Images/casera2.jpg',D,20,40),
+	send(D,open).%casera mediana
+paraOrnamental(grande,amplio,catorce_mil):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Cornish')),
+	send(D,append,L),
+	mostrar('./Images/conchinchina.jpg',D,20,40),
+	send(D,open).%conchinchina
+paraOrnamental(grande,amplio,veinte_mil):-
+        new(D,dialog('Gallina')),
+        new(L,label(n,'Española de cara blanca')),
+	send(D,append,L),
+	mostrar('./Images/cara_blanca.jpg',D,20,40),
+	send(D,open).%español cara blanca
+paraOrnamental(grande,estrecho,siete_mil):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Gallina casera')),
+	send(D,append,L),
+	mostrar('./Images/casera_grande.jpg',D,20,40),
+	send(D,open).%casera grande
+paraOrnamental(grande,estrecho,catorce_mil):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Gallina casera')),
+	send(D,append,L),
+	mostrar('./Images/casera_grande.jpg',D,20,40),
+	send(D,open).%casera grande
+paraOrnamental(grande,estrecho,veinte_mil):-
+	new(D,dialog('Gallina')),
+        new(L,label(n,'Gallina casera chiricana')),
+	send(D,append,L),
+	mostrar('./Images/chiricana.jpg',D,20,40),
+	send(D,open).%chiricana
 
 mostrar(V,D,X,Y):- new(I, image(V)),
         new(B, bitmap(I)),
