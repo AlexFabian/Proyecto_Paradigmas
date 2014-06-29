@@ -324,7 +324,7 @@ paraDoble(mediano,encierro,concentrado,marrón):-
 	mostrar('./Images/new_hampshire.JPG',D,400,40),
 	send(D,open).%Wyandotte
 
-paraDoble(grande,pastoreo,concetrado,marrón):-
+paraDoble(grande,pastoreo,concentrado,marrón):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
