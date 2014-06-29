@@ -403,7 +403,7 @@ paraOrnamental(grande,amplio,siete_mil):-
 	send(D,open).%casera mediana
 paraOrnamental(grande,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
-        new(L,label(n,'Gallina Conchinchina')),
+        new(L,label(n,'Cornish')),
 	send(D,append,L),
 	mostrar('./Images/infoConchinchina.jpg',D,20,40),
 	mostrar('./Images/conchinchina.jpg',D,400,40),
