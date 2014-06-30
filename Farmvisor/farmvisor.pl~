@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 % CI-1441 Paradigmas Computacionales
 % Proyecto Programado
 % Mario Cabrera Vega    B11209
@@ -36,10 +37,49 @@ pProposito:-
        send(D,append,B),
        send(D,default_button,siguiente), % Selecciona el botón siguiente como default
        send(D,open,point(200,350)).
+=======
+% Proyecto Programado
+% CI-1441 Paradigmas Computacionales
+% Mario Cabrera Vega    B11209
+% Alex Ramírez Alpízar  B15239
+
+main:-  new(D,dialog('FARMVISOR')),
+        send(D,size,size(600,600)),
+        send(D,colour,colour(red)),
+        send(D, append, new(Menu, menu_bar)),
+        send(Menu, append, new(Inicio, popup(inicio))),
+        send(Menu, append, new(Ayuda, popup(ayuda))),
+		send(Menu, append, new(Acerca_de, popup(acerca_de))),
+        send_list(Inicio, append,
+                         [ menu_item(inicio, message(@prolog,pProposito))
+                         ]),
+        send_list(Ayuda, append,
+                         [ menu_item(instrucciones_generales, message(@display, inform, '\t\t    ¡Bienvenido a FARMVISOR!\n\n   Este sistema experto le ayudará a elegir la raza de gallina que mejor se adapte a sus necesidades.\n\n   Para ello usted deberá responder una serie de preguntas con base en las cuales se deducirá cuál es su mejor opción.\n\n   Para empezar diríjase a la sección Inicio. \n\n\t\t¡Esperamos que nuestra recomendación le sea útil!')),
+			   menu_item(instrucciones_detalladas, message(@display, inform, 'Instrucciones\n\n1)Esta aplicación está desarrollada para productores aficionados o empresarios que desean iniciar su propia granja avícola. Al finalizar el cuestionario, se le dará una sugerencia de raza de gallina de acuerdo con las especificaciones que usted mismo dé.\n\n2)Para iniciar, diríjase a inicio.\n\n3)Las preguntas que se le harán son de selección. Por cada una usted debe elegir una opción.\n\n3)Usted tiene la oportunidad de cambiar sus respuestas. Para ello, cada formulario de preguntas tiene un botón que le permite volver al formulario anterior.\n\n4)La respuesta del sistema es completamente dependiente de sus respuestas, por lo que el cambio en alguna de ellas, puede alterar el resultado. Por ello se le sugiere ser objetivo al responder para que la respuesta del sistema sea adecuada.\n\n5)El sistema le sugerirá una raza, la más apta para sus requerimientos; sin embargo esto no indica, de ninguna manera, que alguna otra raza no vaya a cumplir con su objetivo. Puede variar un poco las respuestas para ver otros resultados.'))
+                         ]),
+		send_list(Acerca_de, append,
+		         [ menu_item(datos_generales, message(@display, inform, '\tFARMVISOR (2014)\n\nVersion 1.0\n\nDesarrollado por: \n\tMario Cabrera Vega \n\tAlex Ramírez Alpízar\n\nCI-1441 Paradigmas Computacionales\n\n\tProyecto Práctico'))]),
+        send(D, append,new(label(l,'\n\t\tFARMVISOR, sistema experto para elección de aves para granja avícola ',font('times','roman',16)))),
+		send(D, append,new(label(l,'\nEste sistema le ayudará a elegir la raza de gallina que mejor se ajuste a sus necesidades. \n\nPara ello, solamente diríjase al menú de Inicio y conteste las preguntas que se le formularán.',font('times','roman',13)))),
+		mostrar('./Images/variadas.jpg',D,40,170),
+        send(D,open,point(200,90)).
+
+pProposito:-
+       new(D,dialog('PROPÓSITO')),
+       new(Pre1,menu('¿Para qué propósito desea las aves?')),
+       send_list(Pre1,append,[huevos , carne, doble, ornamental]),
+       send(D,append(Pre1)),
+
+       new(B,button(siguiente,and(message(@prolog,principal,Pre1?selection),message(D,destroy)))),
+      send(D,append,B),
+      send(D,default_button,siguiente),
+      send(D,open,point(200,350)).
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 
 %PROPÓSITO HUEVOS
 principal(huevos):-
        new(D,dialog('Especificaciones de gallinas para huevos')),
+<<<<<<< HEAD
 
        %Preguntas específicas para el propósito de huevos
        new(Pre1,menu('¿De qué color desea los huevos?')), % Color de huevos?
@@ -63,10 +103,31 @@ principal(huevos):-
        send(D,append,B1),
        send(D,append,B),
        send(D,open,point(300,300)). % Se abre el formulario
+=======
+       new(Pre1,menu('¿De qué color desea los huevos?')),
+       send_list(Pre1,append,[blanco , marrón]),
+       send(D,append(Pre1)),
+
+       new(Pre2,menu('¿En qué ambiente vivirán?')),
+       send_list(Pre2,append,[pastoreo , encierro]),
+       send(D,append(Pre2)),
+
+       new(Pre3,menu('¿Qué tipo de alimentación usará?')),
+       send_list(Pre3,append,[concentrado , orgánico]),
+       send(D,append(Pre3)),
+
+       new(B1,button(atrás,and(message(@prolog,pProposito),message(D,destroy)))),
+       new(B,button(siguiente,message(@prolog,paraHuevos,Pre1?selection,Pre2?selection,Pre3?selection))),
+
+       send(D,append,B1),
+       send(D,append,B),
+       send(D,open,point(300,300)).
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 
 %PROPÓSITO CARNE
 principal(carne):-
        new(D,dialog('Especificaciones de gallinas para carne')),
+<<<<<<< HEAD
 
        %Preguntas específicas para el propósito de carne
        new(Pre1,menu('¿Qué tamaño espera que alcancen?')), % Tamaño?
@@ -78,10 +139,22 @@ principal(carne):-
        send(D,append(Pre2)),
 
        new(Pre3,menu('¿Qué tipo de alimentación usará?')), % Alimento?
+=======
+       new(Pre1,menu('¿Qué tamaño espera que alcancen?')),
+       send_list(Pre1,append,[mediano , grande]),
+       send(D,append(Pre1)),
+
+       new(Pre2,menu('¿En qué ambiente vivirán?')),
+       send_list(Pre2,append,[pastoreo , encierro]),
+       send(D,append(Pre2)),
+
+       new(Pre3,menu('¿Qué tipo de alimentación usará?')),
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
        send_list(Pre3,append,[concentrado , orgánico]),
        send(D,append(Pre3)),
 
        new(B1,button(atrás,and(message(@prolog,pProposito),message(D,destroy)))),
+<<<<<<< HEAD
        % Evalua cierto cuando hay un predicado llamado paraCarne que cumple las selecciones realizadas
        new(B,button(siguiente,message(@prolog,paraCarne,Pre1?selection,Pre2?selection,Pre3?selection))),
 
@@ -89,10 +162,18 @@ principal(carne):-
        send(D,append,B1),
        send(D,append,B),
        send(D,open,point(300,300)). % Se abre el frame
+=======
+       new(B,button(siguiente,message(@prolog,paraCarne,Pre1?selection,Pre2?selection,Pre3?selection))),
+
+       send(D,append,B1),
+       send(D,append,B),
+       send(D,open,point(300,300)).
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 
 %PROPÓSITO DOBLE
 principal(doble):-
        new(D,dialog('Especificaciones de gallinas para doble propósito')),
+<<<<<<< HEAD
 
        %Preguntas específicas para doble propósito
        new(Pre1,menu('¿Qué tamaño espera que alcancen?')), % Tamaño?
@@ -108,10 +189,26 @@ principal(doble):-
        send(D,append(Pre3)),
 
        new(Pre4,menu('¿De qué color desea los huevos?')), % Color de huevos?
+=======
+       new(Pre1,menu('¿Qué tamaño espera que alcancen?')),
+       send_list(Pre1,append,[mediano , grande]),
+       send(D,append(Pre1)),
+
+       new(Pre2,menu('¿En qué ambiente vivirán?')),
+       send_list(Pre2,append,[pastoreo , encierro]),
+       send(D,append(Pre2)),
+
+       new(Pre3,menu('¿Qué tipo de alimentación usará?')),
+       send_list(Pre3,append,[concentrado , orgánico]),
+       send(D,append(Pre3)),
+
+       new(Pre4,menu('¿De qué color desea los huevos?')),
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
        send_list(Pre4,append,[blanco , marrón]),
        send(D,append(Pre4)),
 
        new(B1,button(atrás,and(message(@prolog,pProposito),message(D,destroy)))),
+<<<<<<< HEAD
        % Evalua cierto cuando hay un predicado llamado paraDoble que cumple las selecciones realizadas
        new(B,button(siguiente,message(@prolog,paraDoble,Pre1?selection,Pre2?selection,Pre3?selection,Pre4?selection))),
 
@@ -119,10 +216,18 @@ principal(doble):-
        send(D,append,B1),
        send(D,append,B),
        send(D,open,point(300,300)). % Se abre el frame
+=======
+       new(B,button(siguiente,message(@prolog,paraDoble,Pre1?selection,Pre2?selection,Pre3?selection,Pre4?selection))),
+
+       send(D,append,B1),
+       send(D,append,B),
+       send(D,open,point(300,300)).
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 
 %PROPÓSITO ORNAMENTAL
 principal(ornamental):-
        new(D,dialog('Especificaciones de gallinas ornamentales')),
+<<<<<<< HEAD
 
        %Preguntas específicas para gallinas ornamentales
        new(Pre1,menu('¿Qué tamaño espera que alcancen?')), % Tamaño?
@@ -134,10 +239,22 @@ principal(ornamental):-
        send(D,append(Pre2)),
 
        new(Pre3,menu('¿Qué precio pagaría por pareja?')), % Precio?
+=======
+       new(Pre1,menu('¿Qué tamaño espera que alcancen?')),
+       send_list(Pre1,append,[mediano , grande]),
+       send(D,append(Pre1)),
+
+       new(Pre2,menu('¿Qué tipo de comederos usará?')),
+       send_list(Pre2,append,[amplio , estrecho]),
+       send(D,append(Pre2)),
+
+       new(Pre3,menu('¿Qué precio pagaría por pareja?')),
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
        send_list(Pre3,append,[siete_mil , catorce_mil, veinte_mil]),
        send(D,append(Pre3)),
 
        new(B1,button(atrás,and(message(@prolog,pProposito),message(D,destroy)))),
+<<<<<<< HEAD
        % Evalua cierto cuando hay un predicado llamado paraOrnamental que cumple las selecciones realizadas
        new(B,button(siguiente,message(@prolog,paraOrnamental,Pre1?selection,Pre2?selection,Pre3?selection))),
 
@@ -148,235 +265,404 @@ principal(ornamental):-
 
 %GALLINAS CON PROPÓSITO HUEVOS
 paraHuevos(blanco,pastoreo,concentrado):- % Gallina Menorca
+=======
+       new(B,button(siguiente,message(@prolog,paraOrnamental,Pre1?selection,Pre2?selection,Pre3?selection))),
+
+       send(D,append,B1),
+       send(D,append,B),
+       send(D,open,point(300,300)).
+
+paraHuevos(blanco,pastoreo,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Menorca')),
 	send(D,append,L),
 	mostrar('./Images/infoMenorca.jpg',D,20,40),
 	mostrar('./Images/menorca.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(blanco,pastoreo,orgánico):- % Gallina Andaluza
+=======
+	send(D,open).%menorca.
+paraHuevos(blanco,pastoreo,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Andaluza')),
 	send(D,append,L),
 	mostrar('./Images/infoAndaluza.jpg',D,20,40),
 	mostrar('./Images/andaluza_azul.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(blanco,encierro,orgánico):- % Gallina Combatiente Español
+=======
+	send(D,open).%andaluza.
+paraHuevos(blanco,encierro,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Combatiente Español')),
 	send(D,append,L),
 	mostrar('./Images/infoCombatiente.jpg',D,20,40),
 	mostrar('./Images/combatiente_español.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(blanco,encierro,concentrado):-  % Gallina Leghorn
+=======
+	send(D,open).%combatiente
+paraHuevos(blanco,encierro,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Leghorn')),
 	send(D,append,L),
 	mostrar('./Images/infoLeghorn.jpg',D,20,40),
 	mostrar('./Images/leghorn.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(marrón,pastoreo,concentrado):- % Gallina Sex Link
+=======
+	send(D,open). %leghorn
+paraHuevos(marrón,pastoreo,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
 	mostrar('./Images/infoSex_link.jpg',D,20,40),
 	mostrar('./Images/sex_link2.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(marrón,pastoreo,orgánico):- % Gallina Sex Link
+=======
+	send(D,open).%Sex_link
+paraHuevos(marrón,pastoreo,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
 	mostrar('./Images/infoSex_link.jpg',D,20,40),
 	mostrar('./Images/sex_link.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(marrón,encierro,concentrado):- % Gallina Rhode Island
+=======
+	send(D,open).%Sex_link
+paraHuevos(marrón,encierro,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rhode Island')),
 	send(D,append,L),
 	mostrar('./Images/infoRhode_island.JPG',D,20,40),
 	mostrar('./Images/rhode_island.JPG',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraHuevos(marrón,encierro,orgánico):- % Gallina Plymouth Rock
+=======
+	send(D,open). %rhode island
+paraHuevos(marrón,encierro,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Plymouth Rock')),
 	send(D,append,L),
 	mostrar('./Images/InfoPlymouth_rock.jpg',D,20,40),
 	mostrar('./Images/plymouth_rock-barrado2.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 
 %GALLINAS CON PROPÓSITO CARNE
 paraCarne(mediano,pastoreo,concentrado):- % Gallina Brolier
+=======
+	send(D,open).%Plymouth Rock
+paraCarne(mediano,pastoreo,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Broiler')),
 	send(D,append,L),
 	mostrar('./Images/infoBroiler.jpg',D,20,40),
 	mostrar('./Images/broiler.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(mediano,pastoreo,orgánico):- % Gallina Jersey
+=======
+	send(D,open).%Broiler
+paraCarne(mediano,pastoreo,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Jersey')),
 	send(D,append,L),
 	mostrar('./Images/infoJersey.jpg',D,20,40),
 	mostrar('./Images/jersey.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(mediano,encierro,orgánico):- % Gallina Casera Grande
+=======
+	send(D,open).%Jersey
+paraCarne(mediano,encierro,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Casera Grande')),
 	send(D,append,L),
 	mostrar('./Images/infoCasera_grande.jpg',D,20,40),
 	mostrar('./Images/casera_grande.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(mediano,encierro,concentrado):- % Gallina Cornish
+=======
+	send(D,open).%Casera grande
+paraCarne(mediano,encierro,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Cornish')),
 	send(D,append,L),
 	mostrar('./Images/infoCornish.jpg',D,20,40),
 	mostrar('./Images/cornish.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(grande,pastoreo,concentrado):- % Gallina Orpington
+=======
+	send(D,open).%Cornish
+paraCarne(grande,pastoreo,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Orpington')),
 	send(D,append,L),
 	mostrar('./Images/infoOrpington.jpg',D,20,40),
 	mostrar('./Images/orpington.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(grande,pastoreo,orgánico):- % Gallina Brahma
+=======
+	send(D,open).%Orpington
+paraCarne(grande,pastoreo,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Brahma')),
 	send(D,append,L),
 	mostrar('./Images/infoBrahma.jpg',D,20,40),
 	mostrar('./Images/brahma_blanca.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(grande,encierro,concentrado):- % Gallina Broiler
+=======
+	send(D,open).%Brahma
+paraCarne(grande,encierro,concentrado):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Broiler')),
 	send(D,append,L),
 	mostrar('./Images/infoBroiler.jpg',D,20,40),
 	mostrar('./Images/broiler.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraCarne(grande,encierro,orgánico):- % Gallina Broiler
+=======
+	send(D,open).%Broiler
+paraCarne(grande,encierro,orgánico):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Broiler')),
 	send(D,append,L),
 	mostrar('./Images/infoBroiler.jpg',D,20,40),
 	mostrar('./Images/broiler.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 
 %GALLINAS CON DOBLE PROPÓSITO
 paraDoble(mediano,pastoreo,concentrado,blanco):- % Gallina Pita Pinta
+=======
+	send(D,open).%Broiler
+paraDoble(mediano,pastoreo,concentrado,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Pita Pinta')),
 	send(D,append,L),
 	mostrar('./Images/infoPitaPinta.jpg',D,20,40),
 	mostrar('./Images/pita_pinta.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,pastoreo,orgánico,blanco):- % Gallina Pita Pinta
+=======
+	send(D,open).%pita_pinta
+paraDoble(mediano,pastoreo,orgánico,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Pita Pinta')),
 	send(D,append,L),
 	mostrar('./Images/infoPitaPinta.jpg',D,20,40),
 	mostrar('./Images/pita_pinta.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,encierro,orgánico,blanco):- % Gallina Rubia Piamontesa
+=======
+	send(D,open).%pita_pinta
+paraDoble(mediano,encierro,orgánico,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rubia Piamontesa')),
 	send(D,append,L),
 	mostrar('./Images/infoRubia.jpg',D,20,40),
 	mostrar('./Images/rubia_piamontesa.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,encierro,concentrado,blanco):- % Gallina Rubia Piamontesa
+=======
+	send(D,open).%Rubia_piamontesa
+paraDoble(mediano,encierro,concentrado,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Rubia Piamontesa')),
 	send(D,append,L),
 	mostrar('./Images/infoRubia.jpg',D,20,40),
 	mostrar('./Images/rubia_piamontesa.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,pastoreo,concentrado,blanco):- % Gallina Valdarno
+=======
+	send(D,open).%Rubia_piamontesa
+paraDoble(grande,pastoreo,concentrado,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Valdarno')),
 	send(D,append,L),
 	mostrar('./Images/infoValdarno.jpg',D,20,40),
 	mostrar('./Images/valdarno.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,pastoreo,orgánico,blanco):- % Gallina La Fleche
+=======
+	send(D,open).%Valdarno
+paraDoble(grande,pastoreo,orgánico,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'La Fleche')),
 	send(D,append,L),
 	mostrar('./Images/infoFleche.jpg',D,20,40),
 	mostrar('./Images/la_fleche.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,encierro,concentrado,blanco):- % Gallina Catalana de Prat
+=======
+	send(D,open).%La_Fleche
+paraDoble(grande,encierro,concentrado,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Catalana de Prat')),
 	send(D,append,L),
 	mostrar('./Images/infoCatalana.jpg',D,20,40),
 	mostrar('./Images/catalana_de_prat.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,encierro,orgánico,blanco):- % Gallina Catalana de Prat
+=======
+	send(D,open).%Catalana de Prat
+paraDoble(grande,encierro,orgánico,blanco):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Catalana de Prat')),
 	send(D,append,L),
 	mostrar('./Images/infoCatalana.jpg',D,20,40),
 	mostrar('./Images/catalana_de_prat.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,pastoreo,concentrado,marrón):- % Gallina Sussex
+=======
+	send(D,open).%Catalana de Prat
+paraDoble(mediano,pastoreo,concentrado,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Sussex')),
 	send(D,append,L),
 	mostrar('./Images/infoSussex.jpg',D,20,40),
 	mostrar('./Images/sussex.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,pastoreo,orgánico,marrón):- % Gallina Sex Link
+=======
+	send(D,open).%Sussex
+paraDoble(mediano,pastoreo,orgánico,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
 	mostrar('./Images/infoSex_link.jpg',D,20,40),
 	mostrar('./Images/sex_link.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,encierro,orgánico,marrón):- % Gallina Sex Link
+=======
+	send(D,open).%Sex_link
+paraDoble(mediano,encierro,orgánico,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Sex link')),
 	send(D,append,L),
 	mostrar('./Images/infoSex_link.jpg',D,20,40),
 	mostrar('./Images/sex_link2.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(mediano,encierro,concentrado,marrón):- % Gallina Wyandotte
+=======
+	send(D,open).%%Sex_link
+paraDoble(mediano,encierro,concentrado,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'New Hampshire')),
 	send(D,append,L),
 	mostrar('./Images/infoNew.JPG',D,20,40),
 	mostrar('./Images/new_hampshire.JPG',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,pastoreo,concentrado,marrón):- % Gallina Wyandotte
+=======
+	send(D,open).%Wyandotte
+
+paraDoble(grande,pastoreo,concentrado,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
         new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
 	mostrar('./Images/infoWyandotte.jpg',D,20,40),
 	mostrar('./Images/wyandotte.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,pastoreo,orgánico,marrón):- % Gallina Plymouth Rock
+=======
+	send(D,open).%Wyandotte
+paraDoble(grande,pastoreo,orgánico,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Plymouth Rock')),
 	send(D,append,L),
 	mostrar('./Images/infoPlymouth_rock.jpg',D,20,40),
 	mostrar('./Images/plymouth_rock_barrado.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,encierro,concentrado,marrón):- % Gallina Wyandotte
+=======
+	send(D,open).%Plymouth Rock
+paraDoble(grande,encierro,concentrado,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
 	mostrar('./Images/infoWyandotte.jpg',D,20,40),
 	mostrar('./Images/wyandotte.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 paraDoble(grande,encierro,orgánico,marrón):- % Gallina Wyandotte
+=======
+	send(D,open).%Wyandotte
+paraDoble(grande,encierro,orgánico,marrón):-
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	new(D,dialog('Gallina')),
         new(L,label(n,'Wyandotte')),
 	send(D,append,L),
 	mostrar('./Images/infoWyandotte.jpg',D,20,40),
 	mostrar('./Images/wyandotte.jpg',D,400,40),
+<<<<<<< HEAD
 	send(D,open).
 
 %GALLINAS CON PROPÓSITO ORNAMENTAL
+=======
+	send(D,open).%Wyandotte
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 paraOrnamental(mediano,amplio,siete_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Enana')),
@@ -428,7 +714,11 @@ paraOrnamental(grande,amplio,siete_mil):-
 	send(D,open).%casera mediana
 paraOrnamental(grande,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
+<<<<<<< HEAD
         new(L,label(n,'Conchinchina')),
+=======
+        new(L,label(n,'Cornish')),
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	send(D,append,L),
 	mostrar('./Images/infoConchinchina.jpg',D,20,40),
 	mostrar('./Images/conchinchina.jpg',D,400,40),
@@ -462,6 +752,7 @@ paraOrnamental(grande,estrecho,veinte_mil):-
 	mostrar('./Images/sultana.jpg',D,400,40),
 	send(D,open).%sultana
 
+<<<<<<< HEAD
 %Muestra el resultado obtenido
 mostrar(V,D,X,Y):-
 	new(I, image(V)), %Obtiene la imagen a partir del path
@@ -472,4 +763,14 @@ mostrar(V,D,X,Y):-
         send(D1, display, F2), %Se agrega la figura en un dispositivo
         send(D, display, D1),
         send(D,display,D1,point(X,Y)). %Se despliega el dispositovo en la posición (X,Y)
+=======
+mostrar(V,D,X,Y):- new(I, image(V)),
+        new(B, bitmap(I)),
+        new(F2, figure),
+        send(F2, display, B),
+        new(D1, device),
+        send(D1, display, F2),
+        send(D, display, D1),
+        send(D,display,D1,point(X,Y)).
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 

@@ -428,7 +428,11 @@ paraOrnamental(grande,amplio,siete_mil):- % Gallina Casera Mediana
 	send(D,open).
 paraOrnamental(grande,amplio,catorce_mil):- % Gallina Conchinchina
         new(D,dialog('Gallina')),
+<<<<<<< HEAD
         new(L,label(n,'Conchinchina')),
+=======
+        new(L,label(n,'Gallina Conchinchina')),
+>>>>>>> b565690b3a24786d369ddf31a143c632a6b0b7c3
 	send(D,append,L),
 	mostrar('./Images/infoConchinchina.jpg',D,20,40),
 	mostrar('./Images/conchinchina.jpg',D,400,40),
