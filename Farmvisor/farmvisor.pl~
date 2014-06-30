@@ -377,90 +377,90 @@ paraDoble(grande,encierro,orgánico,marrón):- % Gallina Wyandotte
 	send(D,open).
 
 %GALLINAS CON PROPÓSITO ORNAMENTAL
-paraOrnamental(mediano,amplio,siete_mil):- % Gallina Enana
+paraOrnamental(mediano,amplio,siete_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Enana')),
 	send(D,append,L),
 	mostrar('./Images/infoEnanas.jpg',D,20,40),
 	mostrar('./Images/nagasaki.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(mediano,amplio,catorce_mil):- % Gallina Holandesa
+	send(D,open). %enana
+paraOrnamental(mediano,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Moñuda holandesa')),
 	send(D,append,L),
 	mostrar('./Images/infoPolaca.jpg',D,20,40),
 	mostrar('./Images/polaca_negra.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(mediano,amplio,veinte_mil):- % Gallina Paduana
+	send(D,open).%holandesa
+paraOrnamental(mediano,amplio,veinte_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Paduana')),
 	send(D,append,L),
 	mostrar('./Images/infoPaduana.jpg',D,20,40),
 	mostrar('./Images/paduana.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(mediano,estrecho,siete_mil):- % Gallina Enana
+	send(D,open).%paduana
+paraOrnamental(mediano,estrecho,siete_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Enana')),
 	send(D,append,L),
 	mostrar('./Images/infoEnanas.jpg',D,20,40),
 	mostrar('./Images/nagasaki2.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(mediano,estrecho,catorce_mil):- % Gallina Sedosa Japonesa
+	send(D,open).%enana
+paraOrnamental(mediano,estrecho,catorce_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Sedosa Japonesa')),
 	send(D,append,L),
 	mostrar('./Images/infoJaponesa.jpg',D,20,40),
 	mostrar('./Images/japonesa.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(mediano,estrecho,veinte_mil):- % Gallina Española Cara Blanca
+	send(D,open).%
+paraOrnamental(mediano,estrecho,veinte_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n, 'Española de cara blanca')),
 	send(D,append,L),
 	mostrar('./Images/infoCaraBlanca.jpg',D,20,40),
 	mostrar('./Images/cara_blanca.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(grande,amplio,siete_mil):- % Gallina Casera Mediana
+	send(D,open).%español cara blancan
+paraOrnamental(grande,amplio,siete_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina casera')),
 	send(D,append,L),
 	mostrar('./Images/infoCasera.jpg',D,20,40),
 	mostrar('./Images/casera2.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(grande,amplio,catorce_mil):- % Gallina Conchinchina
+	send(D,open).%casera mediana
+paraOrnamental(grande,amplio,catorce_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Conchinchina')),
 	send(D,append,L),
 	mostrar('./Images/infoConchinchina.jpg',D,20,40),
 	mostrar('./Images/conchinchina.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(grande,amplio,veinte_mil):- % Gallina Española Cara Blanca
+	send(D,open).%conchinchina
+paraOrnamental(grande,amplio,veinte_mil):-
         new(D,dialog('Gallina')),
         new(L,label(n,'Española de cara blanca')),
 	send(D,append,L),
 	mostrar('./Images/infoCaraBlanca.jpg',D,20,40),
 	mostrar('./Images/cara_blanca.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(grande,estrecho,siete_mil):- % Gallina Chiricana
+	send(D,open).%español cara blanca
+paraOrnamental(grande,estrecho,siete_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina chiricana')),
 	send(D,append,L),
 	mostrar('./Images/infoChiricana.jpg',D,20,40),
 	mostrar('./Images/chiricana.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(grande,estrecho,catorce_mil):- % Gallina Casera
+	send(D,open).%chiricana
+paraOrnamental(grande,estrecho,catorce_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Casera')),
 	send(D,append,L),
 	mostrar('./Images/infoCasera_grande.jpg',D,20,40),
 	mostrar('./Images/casera_grande.jpg',D,400,40),
-	send(D,open).
-paraOrnamental(grande,estrecho,veinte_mil):- % Gallina Sultana
+	send(D,open).%casera grande
+paraOrnamental(grande,estrecho,veinte_mil):-
 	new(D,dialog('Gallina')),
         new(L,label(n,'Gallina Sultana')),
 	send(D,append,L),
 	mostrar('./Images/infoSultana.jpg',D,20,40),
 	mostrar('./Images/sultana.jpg',D,400,40),
-	send(D,open).
+	send(D,open).%sultana
 
 %Muestra el resultado obtenido
 mostrar(V,D,X,Y):-
